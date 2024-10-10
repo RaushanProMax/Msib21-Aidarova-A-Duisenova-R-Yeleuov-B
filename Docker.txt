@@ -1,0 +1,17 @@
+# Используем базовый образ с Python
+FROM python:3.9-slim
+
+# Устанавливаем рабочую директорию в контейнере
+WORKDIR /app
+
+# Устанавливаем зависимости для Tkinter
+RUN apt-get update && apt-get install -y python3-tk
+
+# Копируем текущую директорию в контейнер
+COPY . /app
+
+# Открываем порт (если нужно для GUI)
+EXPOSE 8080
+
+# Команда для запуска приложения
+CMD ["python", "antivirus.py"]
